@@ -1,91 +1,104 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { AuthModal } from "@/components/auth-modal";
-import { BookOpen, Award, Users, TrendingUp, CheckCircle, Star, Globe, Shield, Clock, Target } from "lucide-react";
+import { BookOpen, Award, Users, TrendingUp, CheckCircle, Star, Globe, Shield, Clock, Target, ArrowRight, Play, Download, Zap } from "lucide-react";
 
 export default function Landing() {
   const [, setLocation] = useLocation();
   const [showAuthModal, setShowAuthModal] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
 
   const features = [
     {
       icon: <BookOpen className="w-10 h-10 text-white" />,
       title: "Formation Gratuite",
-      description: "Accès libre à tous les modules de formation SYCEBNL avec contenu premium",
+      description: "Accès libre à tous les modules de formation SYCEBNL avec contenu premium et ressources exclusives",
       bgColor: "bg-gradient-to-br from-blue-500 to-blue-600",
-      highlight: "100% Gratuit"
+      highlight: "100% Gratuit",
+      delay: "delay-100"
     },
     {
       icon: <Award className="w-10 h-10 text-white" />,
       title: "Certification Internationale",
-      description: "Certificat reconnu SYCEBNL validé par des experts internationaux",
+      description: "Certificat reconnu SYCEBNL validé par des experts internationaux et accepté mondialement",
       bgColor: "bg-gradient-to-br from-emerald-500 to-emerald-600",
-      highlight: "Reconnu Mondialement"
+      highlight: "Reconnu Mondialement",
+      delay: "delay-200"
     },
     {
       icon: <TrendingUp className="w-10 h-10 text-white" />,
       title: "Apprentissage Adaptatif",
-      description: "IA intégrée pour personnaliser votre parcours d'apprentissage",
+      description: "Intelligence artificielle intégrée pour personnaliser votre parcours d'apprentissage selon vos besoins",
       bgColor: "bg-gradient-to-br from-purple-500 to-purple-600",
-      highlight: "Technologie IA"
+      highlight: "Technologie IA",
+      delay: "delay-300"
     }
   ];
 
   const stats = [
-    { number: "5000+", label: "Étudiants Formés", icon: <Users className="w-6 h-6" /> },
-    { number: "98%", label: "Taux de Réussite", icon: <Target className="w-6 h-6" /> },
-    { number: "24/7", label: "Support Disponible", icon: <Clock className="w-6 h-6" /> },
-    { number: "15+", label: "Pays Participants", icon: <Globe className="w-6 h-6" /> }
+    { number: "5000+", label: "Étudiants Formés", icon: <Users className="w-6 h-6" />, color: "text-blue-600" },
+    { number: "98%", label: "Taux de Réussite", icon: <Target className="w-6 h-6" />, color: "text-emerald-600" },
+    { number: "24/7", label: "Support Disponible", icon: <Clock className="w-6 h-6" />, color: "text-purple-600" },
+    { number: "15+", label: "Pays Participants", icon: <Globe className="w-6 h-6" />, color: "text-orange-600" }
   ];
 
   const modules = [
     {
       number: 1,
       title: "Fondamentaux de la Comptabilité des Projets SYCEBNL",
-      description: "Maîtrisez les bases essentielles avec des exemples concrets et des cas d'usage réels",
+      description: "Maîtrisez les bases essentielles avec des exemples concrets et des cas d'usage réels du terrain",
       topics: ["Introduction au SYCEBNL", "Architecture du plan comptable", "Principes fondamentaux", "Normes internationales"],
       duration: "4h",
       level: "Débutant",
-      color: "from-blue-500 to-cyan-500"
+      color: "from-blue-500 to-cyan-500",
+      icon: <BookOpen className="w-6 h-6" />
     },
     {
       number: 2,
       title: "Tableau de Flux de Trésorerie",
-      description: "Élaborez des tableaux de flux professionnels avec méthodologie avancée",
+      description: "Élaborez des tableaux de flux professionnels avec méthodologie avancée et outils modernes",
       topics: ["Méthodologie des flux", "Activités opérationnelles", "Analyses avancées", "Cas pratiques"],
       duration: "5h",
       level: "Intermédiaire",
-      color: "from-emerald-500 to-teal-500"
+      color: "from-emerald-500 to-teal-500",
+      icon: <TrendingUp className="w-6 h-6" />
     },
     {
       number: 3,
       title: "Tableau Emplois-Ressources",
-      description: "Optimisez la gestion des ressources avec des outils d'analyse performants",
+      description: "Optimisez la gestion des ressources avec des outils d'analyse performants et stratégiques",
       topics: ["Identification stratégique", "Comptabilisation avancée", "Contrôle budgétaire", "Optimisation"],
       duration: "4h",
       level: "Intermédiaire",
-      color: "from-purple-500 to-indigo-500"
+      color: "from-purple-500 to-indigo-500",
+      icon: <Target className="w-6 h-6" />
     },
     {
       number: 4,
       title: "Analyse Financière et Ratios",
-      description: "Développez une expertise en analyse avec des techniques de pointe",
+      description: "Développez une expertise en analyse avec des techniques de pointe et indicateurs avancés",
       topics: ["Ratios avancés", "Indicateurs KPI", "Évaluation performance", "Benchmarking"],
       duration: "6h",
       level: "Avancé",
-      color: "from-orange-500 to-red-500"
+      color: "from-orange-500 to-red-500",
+      icon: <Zap className="w-6 h-6" />
     },
     {
       number: 5,
       title: "Cas Pratiques et Applications",
-      description: "Appliquez vos connaissances sur des projets réels avec accompagnement expert",
+      description: "Appliquez vos connaissances sur des projets réels avec accompagnement expert personnalisé",
       topics: ["Étude de cas VERDAS", "Projets complexes", "Synthèse experte", "Certification"],
       duration: "8h",
       level: "Expert",
-      color: "from-pink-500 to-rose-500"
+      color: "from-pink-500 to-rose-500",
+      icon: <Award className="w-6 h-6" />
     }
   ];
 
@@ -93,118 +106,122 @@ export default function Landing() {
     {
       name: "Marie Kouassi",
       role: "Directrice Financière, ONG Internationale",
-      content: "Cette formation a transformé ma compréhension de la comptabilité des projets. Les modules sont exceptionnellement bien structurés.",
+      content: "Cette formation a transformé ma compréhension de la comptabilité des projets. Les modules sont exceptionnellement bien structurés et pratiques.",
       rating: 5,
-      avatar: "MK"
+      avatar: "MK",
+      company: "Care International"
     },
     {
-      name: "Jean-Baptiste Togo",
-      role: "Consultant en Gestion de Projets",
-      content: "La certification SYCEBNL m'a ouvert de nouvelles opportunités professionnelles. Je recommande vivement cette formation.",
+      name: "Jean-Baptiste Diallo",
+      role: "Consultant Senior, Cabinet d'Audit",
+      content: "La qualité pédagogique est remarquable. J'ai pu appliquer immédiatement les concepts appris dans mes missions client.",
       rating: 5,
-      avatar: "JT"
+      avatar: "JD",
+      company: "KPMG Afrique"
     },
     {
-      name: "Fatou Diallo",
-      role: "Responsable Comptable",
-      content: "L'approche pratique et les cas concrets font toute la différence. Une formation de qualité internationale.",
+      name: "Fatou Traoré",
+      role: "Responsable Comptable, Ministère",
+      content: "Formation complète et accessible. Le certificat SYCEBNL a valorisé mon profil professionnel de manière significative.",
       rating: 5,
-      avatar: "FD"
+      avatar: "FT",
+      company: "Ministère des Finances"
     }
   ];
 
+  const benefits = [
+    "Accès illimité à tous les modules",
+    "Support expert 24/7",
+    "Certificat international reconnu",
+    "Communauté d'apprentissage active",
+    "Mises à jour de contenu régulières",
+    "Outils pratiques téléchargeables"
+  ];
+
   return (
-    <div className="min-h-screen bg-white">
-      {/* Navigation */}
-      <nav className="bg-white/95 backdrop-blur-md shadow-lg fixed w-full top-0 z-50 border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
-              <div className="flex items-center space-x-2">
-                <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-                  <BookOpen className="w-5 h-5 text-white" />
-                </div>
-                <h1 className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                  SYCEBNL Formation
-                </h1>
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100">
+      {/* Navigation moderne */}
+      <nav className={`fixed top-0 w-full z-50 glass border-b border-white/20 transition-all duration-700 ${isVisible ? 'animate-fade-in-down' : 'opacity-0'}`}>
+        <div className="container-modern py-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-3">
+              <div className="w-10 h-10 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center">
+                <BookOpen className="w-6 h-6 text-white" />
+              </div>
+              <div>
+                <h1 className="text-xl font-bold text-gradient">SYCEBNL</h1>
+                <p className="text-xs text-muted-foreground">Formation Certifiante</p>
               </div>
             </div>
-            <div className="hidden md:flex items-center space-x-8">
-              <a href="#" className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">
-                Accueil
-              </a>
-              <a href="#formation" className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">
-                Formation
-              </a>
-              <a href="#temoignages" className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">
-                Témoignages
-              </a>
-              <button 
+            <div className="flex items-center space-x-4">
+              <Button 
+                variant="ghost" 
                 onClick={() => setLocation("/contact")}
-                className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors"
+                className="hover-scale"
               >
                 Contact
-              </button>
+              </Button>
+              <Button 
+                onClick={() => setShowAuthModal(true)}
+                className="btn-primary"
+              >
+                Commencer
+                <ArrowRight className="w-4 h-4 ml-2" />
+              </Button>
             </div>
-            <Button 
-              onClick={() => setShowAuthModal(true)}
-              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg"
-            >
-              Connexion
-            </Button>
           </div>
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <section className="pt-16 min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 relative overflow-hidden">
-        {/* Background Pattern */}
+      {/* Hero Section Moderne */}
+      <section className="section-padding pt-32 relative overflow-hidden">
         <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
-        <div className="absolute top-20 left-10 w-72 h-72 bg-blue-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"></div>
-        <div className="absolute top-40 right-10 w-72 h-72 bg-purple-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000"></div>
-        <div className="absolute bottom-20 left-20 w-72 h-72 bg-pink-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000"></div>
-        
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <div className="text-center">
-            <Badge className="mb-6 bg-gradient-to-r from-blue-600 to-purple-600 text-white border-0 px-4 py-2">
-              🎓 Formation Certifiante Internationale
+        <div className="container-modern relative">
+          <div className="text-center max-w-4xl mx-auto">
+            <Badge 
+              className={`mb-6 bg-primary/10 text-primary border-primary/20 hover-scale ${isVisible ? 'animate-fade-in-up delay-100' : 'opacity-0'}`}
+            >
+              <Star className="w-4 h-4 mr-2" />
+              Formation #1 en Comptabilité des Projets
             </Badge>
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-gray-900 via-blue-900 to-purple-900 bg-clip-text text-transparent leading-tight">
-              Maîtrisez la Comptabilité
-              <span className="block text-gradient bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                des Projets SYCEBNL
-              </span>
+            
+            <h1 className={`text-responsive-xl font-bold mb-6 text-gradient leading-tight ${isVisible ? 'animate-fade-in-up delay-200' : 'opacity-0'}`}>
+              Maîtrisez la Comptabilité des Projets SYCEBNL
             </h1>
-            <p className="text-xl md:text-2xl mb-8 text-gray-600 max-w-4xl mx-auto leading-relaxed">
-              Formation complète et certifiante pour devenir expert en comptabilité des projets selon les normes internationales SYCEBNL
+            
+            <p className={`text-responsive-md text-muted-foreground mb-8 leading-relaxed ${isVisible ? 'animate-fade-in-up delay-300' : 'opacity-0'}`}>
+              Formation gratuite avec certification internationale reconnue. 
+              Développez votre expertise avec des modules interactifs et des cas pratiques réels.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+            
+            <div className={`flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 ${isVisible ? 'animate-fade-in-up delay-500' : 'opacity-0'}`}>
               <Button 
+                size="lg" 
                 onClick={() => setShowAuthModal(true)}
-                size="lg"
-                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white text-lg font-semibold px-8 py-4 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
+                className="btn-primary text-lg px-8 py-4 hover-glow"
               >
-                🚀 Commencer Maintenant
+                <Play className="w-5 h-5 mr-2" />
+                Commencer Gratuitement
               </Button>
               <Button 
+                size="lg" 
                 variant="outline"
-                size="lg"
-                className="border-2 border-gray-300 text-gray-700 hover:bg-gray-50 text-lg font-semibold px-8 py-4"
-                onClick={() => document.getElementById('formation')?.scrollIntoView({ behavior: 'smooth' })}
+                className="hover-lift border-2"
               >
-                📖 Découvrir le Programme
+                <Download className="w-5 h-5 mr-2" />
+                Télécharger la Brochure
               </Button>
             </div>
-            
-            {/* Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+
+            {/* Statistiques Hero */}
+            <div className={`grid grid-cols-2 md:grid-cols-4 gap-6 ${isVisible ? 'animate-fade-in-up delay-700' : 'opacity-0'}`}>
               {stats.map((stat, index) => (
                 <div key={index} className="text-center">
-                  <div className="flex justify-center mb-2 text-blue-600">
+                  <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl bg-white shadow-soft mb-3 ${stat.color}`}>
                     {stat.icon}
                   </div>
-                  <div className="text-3xl font-bold text-gray-900 mb-1">{stat.number}</div>
-                  <div className="text-sm text-gray-600">{stat.label}</div>
+                  <div className="text-2xl font-bold text-foreground">{stat.number}</div>
+                  <div className="text-sm text-muted-foreground">{stat.label}</div>
                 </div>
               ))}
             </div>
@@ -212,32 +229,30 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-20">
-            <Badge className="mb-4 bg-blue-100 text-blue-800 border-0">
-              ✨ Avantages Exclusifs
-            </Badge>
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">
-              Pourquoi choisir notre formation ?
+      {/* Features Section Améliorée */}
+      <section className="section-padding bg-white/50">
+        <div className="container-modern">
+          <div className="text-center mb-16">
+            <h2 className="text-responsive-lg font-bold mb-4 animate-fade-in-up">
+              Pourquoi Choisir Notre Formation ?
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Une expérience d'apprentissage révolutionnaire avec des technologies de pointe et un accompagnement personnalisé
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto animate-fade-in-up delay-100">
+              Une approche moderne et complète pour maîtriser la comptabilité des projets
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          
+          <div className="grid md:grid-cols-3 gap-8">
             {features.map((feature, index) => (
-              <Card key={index} className="group hover:shadow-2xl transition-all duration-300 border-0 shadow-lg hover:scale-105 overflow-hidden">
-                <CardContent className="p-8 text-center relative">
-                  <Badge className="absolute top-4 right-4 bg-yellow-100 text-yellow-800 text-xs">
-                    {feature.highlight}
-                  </Badge>
-                  <div className={`w-20 h-20 ${feature.bgColor} rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+              <Card key={index} className={`card-modern hover-lift ${feature.delay} animate-fade-in-up`}>
+                <CardContent className="p-8">
+                  <div className={`w-16 h-16 ${feature.bgColor} rounded-2xl flex items-center justify-center mb-6 hover-scale`}>
                     {feature.icon}
                   </div>
-                  <h3 className="text-2xl font-bold mb-4 text-gray-900">{feature.title}</h3>
-                  <p className="text-gray-600 leading-relaxed">{feature.description}</p>
+                  <Badge className="mb-4 bg-accent/10 text-accent border-accent/20">
+                    {feature.highlight}
+                  </Badge>
+                  <h3 className="text-xl font-semibold mb-3">{feature.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -245,50 +260,50 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* Program Structure */}
-      <section id="formation" className="py-24 bg-gradient-to-br from-gray-50 to-blue-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-20">
-            <Badge className="mb-4 bg-purple-100 text-purple-800 border-0">
-              📚 Programme Complet
-            </Badge>
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">
-              Programme de Formation
+      {/* Modules Section Modernisée */}
+      <section className="section-padding">
+        <div className="container-modern">
+          <div className="text-center mb-16">
+            <h2 className="text-responsive-lg font-bold mb-4 animate-fade-in-up">
+              Programme de Formation Complet
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto animate-fade-in-up delay-100">
               5 modules progressifs conçus par des experts pour vous mener de débutant à expert certifié
             </p>
           </div>
+          
           <div className="space-y-8">
             {modules.map((module, index) => (
-              <Card key={module.number} className="group hover:shadow-2xl transition-all duration-300 border-0 shadow-lg overflow-hidden">
+              <Card key={index} className={`card-modern hover-lift animate-fade-in-up delay-${index * 100}`}>
                 <CardContent className="p-8">
-                  <div className="flex flex-col lg:flex-row items-start lg:items-center gap-6">
-                    <div className={`w-16 h-16 bg-gradient-to-r ${module.color} rounded-2xl flex items-center justify-center text-white font-bold text-xl shadow-lg flex-shrink-0`}>
-                      {module.number}
+                  <div className="flex flex-col lg:flex-row gap-6">
+                    <div className="flex-shrink-0">
+                      <div className={`w-20 h-20 bg-gradient-to-br ${module.color} rounded-2xl flex items-center justify-center text-white text-2xl font-bold shadow-colored`}>
+                        {module.number}
+                      </div>
                     </div>
-                    <div className="flex-1">
-                      <div className="flex flex-wrap items-center gap-3 mb-3">
-                        <h3 className="text-2xl font-bold text-gray-900">{module.title}</h3>
-                        <Badge variant="outline" className="text-xs">
-                          {module.duration}
-                        </Badge>
-                        <Badge className={`text-xs ${
-                          module.level === 'Débutant' ? 'bg-green-100 text-green-800' :
-                          module.level === 'Intermédiaire' ? 'bg-yellow-100 text-yellow-800' :
-                          module.level === 'Avancé' ? 'bg-orange-100 text-orange-800' :
-                          'bg-red-100 text-red-800'
-                        }`}>
+                    
+                    <div className="flex-grow">
+                      <div className="flex flex-wrap items-center gap-3 mb-4">
+                        <h3 className="text-xl font-semibold">{module.title}</h3>
+                        <Badge variant="secondary" className="flex items-center gap-1">
+                          {module.icon}
                           {module.level}
                         </Badge>
+                        <Badge variant="outline" className="flex items-center gap-1">
+                          <Clock className="w-3 h-3" />
+                          {module.duration}
+                        </Badge>
                       </div>
-                      <p className="text-gray-600 mb-4 text-lg leading-relaxed">{module.description}</p>
-                      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                      
+                      <p className="text-muted-foreground mb-4 leading-relaxed">{module.description}</p>
+                      
+                      <div className="flex flex-wrap gap-2">
                         {module.topics.map((topic, topicIndex) => (
-                          <div key={topicIndex} className="flex items-center text-sm text-gray-600 bg-white rounded-lg px-3 py-2 shadow-sm">
-                            <CheckCircle className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" />
+                          <Badge key={topicIndex} variant="outline" className="text-xs">
+                            <CheckCircle className="w-3 h-3 mr-1 text-emerald-500" />
                             {topic}
-                          </div>
+                          </Badge>
                         ))}
                       </div>
                     </div>
@@ -300,37 +315,40 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section id="temoignages" className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-20">
-            <Badge className="mb-4 bg-green-100 text-green-800 border-0">
-              💬 Témoignages
-            </Badge>
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">
-              Ce que disent nos étudiants
+      {/* Témoignages Modernisés */}
+      <section className="section-padding bg-gradient-to-br from-slate-50 to-white">
+        <div className="container-modern">
+          <div className="text-center mb-16">
+            <h2 className="text-responsive-lg font-bold mb-4 animate-fade-in-up">
+              Ce Que Disent Nos Étudiants
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Découvrez les retours d'expérience de professionnels qui ont transformé leur carrière grâce à notre formation
+            <p className="text-xl text-muted-foreground animate-fade-in-up delay-100">
+              Plus de 5000 professionnels nous font confiance
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          
+          <div className="grid md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
-              <Card key={index} className="hover:shadow-xl transition-all duration-300 border-0 shadow-lg">
+              <Card key={index} className={`card-modern hover-lift animate-fade-in-up delay-${index * 100}`}>
                 <CardContent className="p-8">
                   <div className="flex items-center mb-4">
                     {[...Array(testimonial.rating)].map((_, i) => (
                       <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
                     ))}
                   </div>
-                  <p className="text-gray-600 mb-6 italic leading-relaxed">"{testimonial.content}"</p>
+                  
+                  <blockquote className="text-muted-foreground mb-6 leading-relaxed italic">
+                    "{testimonial.content}"
+                  </blockquote>
+                  
                   <div className="flex items-center">
-                    <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold mr-4">
+                    <div className="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center text-white font-semibold mr-4">
                       {testimonial.avatar}
                     </div>
                     <div>
-                      <div className="font-semibold text-gray-900">{testimonial.name}</div>
-                      <div className="text-sm text-gray-600">{testimonial.role}</div>
+                      <div className="font-semibold">{testimonial.name}</div>
+                      <div className="text-sm text-muted-foreground">{testimonial.role}</div>
+                      <div className="text-xs text-primary font-medium">{testimonial.company}</div>
                     </div>
                   </div>
                 </CardContent>
@@ -340,94 +358,105 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-24 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 text-white relative overflow-hidden">
+      {/* CTA Section Finale */}
+      <section className="section-padding bg-gradient-to-br from-primary to-accent text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-black/10"></div>
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Prêt à transformer votre carrière ?
-          </h2>
-          <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto leading-relaxed">
-            Rejoignez plus de 5000 professionnels qui ont déjà maîtrisé la comptabilité des projets SYCEBNL et boosté leur carrière
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <div className="container-modern relative">
+          <div className="text-center max-w-3xl mx-auto">
+            <h2 className="text-responsive-lg font-bold mb-6 animate-fade-in-up">
+              Prêt à Transformer Votre Carrière ?
+            </h2>
+            <p className="text-xl mb-8 opacity-90 animate-fade-in-up delay-100">
+              Rejoignez des milliers de professionnels qui ont déjà obtenu leur certification SYCEBNL
+            </p>
+            
+            <div className="grid md:grid-cols-2 gap-6 mb-8">
+              <div className="text-left">
+                <h4 className="font-semibold mb-3">Ce que vous obtenez :</h4>
+                <ul className="space-y-2">
+                  {benefits.map((benefit, index) => (
+                    <li key={index} className="flex items-center">
+                      <CheckCircle className="w-5 h-5 mr-3 text-emerald-300" />
+                      {benefit}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="flex items-center justify-center">
+                <div className="text-center">
+                  <div className="text-4xl font-bold mb-2">0€</div>
+                  <div className="text-lg opacity-90">Formation Gratuite</div>
+                  <div className="text-sm opacity-75">Certification payante</div>
+                </div>
+              </div>
+            </div>
+            
             <Button 
+              size="lg" 
               onClick={() => setShowAuthModal(true)}
-              size="lg"
-              className="bg-white text-blue-600 hover:bg-gray-100 text-lg font-semibold px-8 py-4 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
+              className="bg-white text-primary hover:bg-white/90 text-lg px-8 py-4 hover-glow animate-fade-in-up delay-300"
             >
-              🎯 S'inscrire Maintenant
-            </Button>
-            <Button 
-              variant="outline"
-              size="lg"
-              className="border-2 border-white text-white hover:bg-white hover:text-blue-600 text-lg font-semibold px-8 py-4"
-              onClick={() => setLocation("/contact")}
-            >
-              💬 Nous Contacter
+              <Play className="w-5 h-5 mr-2" />
+              Commencer Maintenant
             </Button>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+      {/* Footer Moderne */}
+      <footer className="bg-slate-900 text-white py-12">
+        <div className="container-modern">
+          <div className="grid md:grid-cols-4 gap-8">
             <div>
-              <div className="flex items-center space-x-2 mb-4">
-                <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-                  <BookOpen className="w-5 h-5 text-white" />
+              <div className="flex items-center space-x-3 mb-4">
+                <div className="w-10 h-10 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center">
+                  <BookOpen className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="text-lg font-bold">SYCEBNL Formation</h3>
+                <div>
+                  <h3 className="text-xl font-bold">SYCEBNL</h3>
+                  <p className="text-sm text-slate-400">Formation Certifiante</p>
+                </div>
               </div>
-              <p className="text-gray-400 leading-relaxed">
-                La référence en formation certifiante pour la comptabilité des projets selon les normes internationales SYCEBNL.
+              <p className="text-slate-400 text-sm leading-relaxed">
+                La référence en formation comptabilité des projets avec certification internationale reconnue.
               </p>
             </div>
+            
             <div>
-              <h4 className="text-md font-semibold mb-4 text-white">Formation</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li className="hover:text-white transition-colors cursor-pointer">Modules de formation</li>
-                <li className="hover:text-white transition-colors cursor-pointer">Évaluations QCM</li>
-                <li className="hover:text-white transition-colors cursor-pointer">Certification</li>
-                <li className="hover:text-white transition-colors cursor-pointer">Support pédagogique</li>
+              <h4 className="font-semibold mb-4">Formation</h4>
+              <ul className="space-y-2 text-sm text-slate-400">
+                <li><a href="#" className="hover:text-white transition-colors">Modules</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Certification</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Support</a></li>
               </ul>
             </div>
+            
             <div>
-              <h4 className="text-md font-semibold mb-4 text-white">Support</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li className="hover:text-white transition-colors cursor-pointer">FAQ</li>
-                <li className="hover:text-white transition-colors cursor-pointer">Contact</li>
-                <li className="hover:text-white transition-colors cursor-pointer">Documentation</li>
-                <li className="hover:text-white transition-colors cursor-pointer">Assistance 24/7</li>
+              <h4 className="font-semibold mb-4">Ressources</h4>
+              <ul className="space-y-2 text-sm text-slate-400">
+                <li><a href="#" className="hover:text-white transition-colors">Documentation</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">FAQ</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Blog</a></li>
               </ul>
             </div>
+            
             <div>
-              <h4 className="text-md font-semibold mb-4 text-white">Informations</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li className="hover:text-white transition-colors cursor-pointer">Conditions d'utilisation</li>
-                <li className="hover:text-white transition-colors cursor-pointer">Politique de confidentialité</li>
-                <li className="hover:text-white transition-colors cursor-pointer">Certification internationale</li>
-                <li className="hover:text-white transition-colors cursor-pointer">Tarifs</li>
+              <h4 className="font-semibold mb-4">Contact</h4>
+              <ul className="space-y-2 text-sm text-slate-400">
+                <li>support@sycebnl.com</li>
+                <li>+33 1 23 45 67 89</li>
+                <li>Paris, France</li>
               </ul>
             </div>
           </div>
-          <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-400 mb-4 md:mb-0">&copy; 2024 SYCEBNL Formation. Tous droits réservés.</p>
-            <div className="flex items-center space-x-4">
-              <Shield className="w-5 h-5 text-green-400" />
-              <span className="text-sm text-gray-400">Certification sécurisée et reconnue</span>
-            </div>
+          
+          <div className="border-t border-slate-800 mt-8 pt-8 text-center text-sm text-slate-400">
+            <p>&copy; 2024 SYCEBNL. Tous droits réservés.</p>
           </div>
         </div>
       </footer>
 
-      {/* Auth Modal */}
-      <AuthModal 
-        isOpen={showAuthModal} 
-        onClose={() => setShowAuthModal(false)} 
-      />
+      <AuthModal open={showAuthModal} onOpenChange={setShowAuthModal} />
     </div>
   );
 }

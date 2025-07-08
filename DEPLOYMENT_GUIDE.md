@@ -15,7 +15,7 @@ Votre application a été configurée pour PostgreSQL avec les modifications sui
 - ✅ **Schema mis à jour** : Migration de SQLite vers PostgreSQL dans `shared/schema.ts`
 - ✅ **Configuration Drizzle** : Mise à jour pour PostgreSQL dans `drizzle.config.ts`
 - ✅ **Configuration Base de données** : Utilisation de `@neondatabase/serverless` dans `server/db.ts`
-- ✅ **Configuration Vercel** : Fichier `vercel.json` créé
+- ✅ **Configuration Vercel** : Fichier `vercel.json` créé et corrigé
 - ✅ **Variables d'environnement** : Fichiers `.env` et `.env.example` créés
 
 ### 2. Pousser le Code sur GitHub
@@ -161,7 +161,7 @@ sycebnl_application/
 ├── .env                     # Variables d'environnement locales
 ├── .env.example            # Exemple de variables d'environnement
 ├── .gitignore              # Fichiers à ignorer par Git
-├── vercel.json             # Configuration Vercel
+├── vercel.json             # Configuration Vercel (corrigée)
 ├── vite.config.ts          # Configuration Vite
 ├── drizzle.config.ts       # Configuration Drizzle (PostgreSQL)
 ├── shared/
